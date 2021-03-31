@@ -2,12 +2,18 @@
 % Please edit documentation in R/autoplot.radfit.R
 \name{autoplot.radfit}
 \alias{autoplot.radfit}
+\alias{autoplot.radfit.frame}
 \alias{fortify.radfit}
+\alias{fortify.radfit.frame}
 \title{Autoplot Graphics for vegan RAD models}
 \usage{
 \method{autoplot}{radfit}(object, facet = TRUE, ...)
 
+\method{autoplot}{radfit.frame}(object, ...)
+
 \method{fortify}{radfit}(model, data, pick = NULL, ...)
+
+\method{fortify}{radfit.frame}(model, data, pick = "AIC", ...)
 }
 \arguments{
 \item{object}{Result object from \code{\link[vegan]{radfit}}.}
@@ -43,4 +49,12 @@ m1 <- radfit(mite[1,])
 autoplot(m1)
 ## With log-log scale, Zipf model is a line
 autoplot(m1) + scale_x_log10()
+## Show only the best model
+autoplot(m1, pick = "AIC")
+## Show selected models in one frame
+autoplot(m1, pick = c("Z","M","L"), facet=FALSE)
+## plot best modesl for several sites
+m <- radfit(mite[1:12,])
+autoplot(m, pick="AIC")
+
 }
