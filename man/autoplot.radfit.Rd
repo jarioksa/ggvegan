@@ -5,18 +5,26 @@
 \alias{fortify.radfit}
 \title{Autoplot Graphics for vegan RAD models}
 \usage{
-\method{autoplot}{radfit}(object, ...)
+\method{autoplot}{radfit}(object, facet = TRUE, ...)
 
-\method{fortify}{radfit}(model, data, ...)
+\method{fortify}{radfit}(model, data, pick = NULL, ...)
 }
 \arguments{
 \item{object}{Result object from \code{\link[vegan]{radfit}}.}
+
+\item{facet}{Draw each fitted model to a separate facet or (if
+\code{FALSE}) all fitted lines to a single graph.}
 
 \item{...}{other arguments passed to methods}
 
 \item{model}{model or other R object to convert to data frame}
 
 \item{data}{original dataset, if needed}
+
+\item{pick}{Pick or several models. Allowed values are \code{"AIC"}
+and \code{"BIC"} for selecting the best model by AIC or BIC, or
+(a vector of) model names that can be abbreviated. The default
+returns all fitted models.}
 }
 \description{
 \CRANpkg{ggplot2} graphics for Rank-Abundance Distribution models
