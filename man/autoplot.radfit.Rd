@@ -13,7 +13,7 @@
 
 \method{fortify}{radfit}(model, data, pick = NULL, ...)
 
-\method{fortify}{radfit.frame}(model, data, pick = "AIC", ...)
+\method{fortify}{radfit.frame}(model, data, pick = "AIC", order.by = NULL, ...)
 }
 \arguments{
 \item{object}{Result object from \code{\link[vegan]{radfit}}.}
@@ -31,6 +31,8 @@
 and \code{"BIC"} for selecting the best model by AIC or BIC, or
 (a vector of) model names that can be abbreviated. The default
 returns all fitted models.}
+
+\item{order.by}{A vector used for ordering site panels.}
 }
 \description{
 \CRANpkg{ggplot2} graphics for Rank-Abundance Distribution models
@@ -46,15 +48,19 @@ be used to produce the graphics.
 data(mite)
 m1 <- radfit(mite[1,])
 ## With logarithmic y-axis (default) Pre-emption model is a line
-autoplot(m1)
+autoplot(m1) + labs(title="log-Abundance: Pre-emption model is a line")
 ## With log-log scale, Zipf model is a line
-autoplot(m1) + scale_x_log10()
+autoplot(m1) + scale_x_log10() +
+   labs(title="log-log Scale: Zipf model is a line")
 ## Show only the best model
 autoplot(m1, pick = "AIC")
 ## Show selected models in one frame
 autoplot(m1, pick = c("Z","M","L"), facet=FALSE)
-## plot best modesl for several sites
+## plot best models for several sites
 m <- radfit(mite[1:12,])
-autoplot(m, pick="AIC")
+autoplot(m) + labs(title="Model Selection AIC (Default)")
+## use BIC and reoreder sites by their diversity
+autoplot(m, pick="BIC", order.by = diversity(mite[1:12,])) +
+   labs(title="Model Selection BIC, Ordered by Increasing Diversity")
 
 }
