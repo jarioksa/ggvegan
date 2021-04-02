@@ -3,17 +3,23 @@
 \name{autoplot.radfit}
 \alias{autoplot.radfit}
 \alias{autoplot.radfit.frame}
+\alias{autoplot.radline}
 \alias{fortify.radfit}
 \alias{fortify.radfit.frame}
+\alias{fortify.radline}
 \title{Autoplot Graphics for vegan RAD models}
 \usage{
 \method{autoplot}{radfit}(object, facet = TRUE, ...)
 
 \method{autoplot}{radfit.frame}(object, ...)
 
+\method{autoplot}{radline}(object, ...)
+
 \method{fortify}{radfit}(model, data, pick = NULL, ...)
 
 \method{fortify}{radfit.frame}(model, data, pick = "AIC", order.by = NULL, ...)
+
+\method{fortify}{radline}(model, data, ...)
 }
 \arguments{
 \item{object}{Result object from \code{\link[vegan]{radfit}}.}
