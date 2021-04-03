@@ -9,11 +9,17 @@
 \alias{fortify.radline}
 \title{Autoplot Graphics for vegan RAD models}
 \usage{
-\method{autoplot}{radfit}(object, facet = TRUE, ...)
+\method{autoplot}{radfit}(
+  object,
+  facet = TRUE,
+  point.params = list(),
+  line.params = list(),
+  ...
+)
 
-\method{autoplot}{radfit.frame}(object, ...)
+\method{autoplot}{radfit.frame}(object, point.params = list(), line.params = list(), ...)
 
-\method{autoplot}{radline}(object, ...)
+\method{autoplot}{radline}(object, point.params = list(), line.params = list(), ...)
 
 \method{fortify}{radfit}(model, data, pick = NULL, ...)
 
@@ -26,6 +32,10 @@
 
 \item{facet}{Draw each fitted model to a separate facet or (if
 \code{FALSE}) all fitted lines to a single graph.}
+
+\item{point.params, line.params}{Parameters to modify points or
+lines (passed to \code{\link[ggplot2]{geom_point}} and
+\code{\link[ggplot2]{geom_line}}).}
 
 \item{...}{other arguments passed to methods}
 
